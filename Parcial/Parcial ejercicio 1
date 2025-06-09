@@ -1,0 +1,46 @@
+from list_ import List
+
+# Crear la lista enlazada
+superheroes = List()
+
+# Lista de 15 nombres
+nombres = [
+    "Iron Man", "Thor", "Hulk", "Viuda Negra", "Ojo de Halcón",
+    "Capitan America", "Spiderman", "Ant-Man", "Doctor Strange",
+    "Black Panther", "Bruja Escarlata", "Vision", "Falcon",
+    "Winter Soldier", "Star-Lord"
+]
+
+# --- Función recursiva para agregar nombres a la lista ---
+def agregar_superheroes_recursivo(lista, nombres, indice=0):
+    if indice < len(nombres):
+        lista.append(nombres[indice])
+        agregar_superheroes_recursivo(lista, nombres, indice + 1)
+
+# --- Función recursiva para listar los superhéroes ---
+def listar_superheroes_recursivo(nodo):
+    if nodo is not None:
+        print(nodo.value)
+        listar_superheroes_recursivo(nodo.next)
+
+# --- Función recursiva para buscar un superhéroe ---
+def buscar_superheroe_recursivo(nodo, objetivo):
+    if nodo is None:
+        return False
+    if nodo.value == objetivo:
+        return True
+    return buscar_superheroe_recursivo(nodo.next, objetivo)
+
+# --- Agregar los superhéroes a la lista de forma recursiva ---
+agregar_superheroes_recursivo(superheroes, nombres)
+
+# --- Listar todos los superhéroes usando función recursiva ---
+print("Lista de superhéroes:")
+listar_superheroes_recursivo(superheroes.head)
+
+# --- Buscar "Capitan America" usando función recursiva ---
+print("\n¿Está Capitan America?")
+if buscar_superheroe_recursivo(superheroes.head, "Capitan America"):
+    print("Capitan America está en la lista.")
+else:
+    print("Capitan America NO está en la lista.")
